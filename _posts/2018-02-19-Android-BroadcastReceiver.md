@@ -91,6 +91,7 @@ public class MainActivity extends Activity {
 }
 ```
 ## 리시버의 동작 제한
+
 1. Intent.FLAG_EXCLUDE_STOPPED_PACKAGES
 - BR을 포함하는 activity가 한번도 실행되지 않았거나 강제종료 되었다면 BR은 동작하지 않는다.
 - adb shell sumpsys package 를 통해 package 정보를 확인할 수 있고 sopped=[false/true] 를 통해 그 값을 확인할 수 있다.
@@ -131,9 +132,6 @@ adb shell sumpsys package
     </application>
 ```
 ```java
-
-```
-
 
 ## 기타
 포그라운드 서비스는 사용자가 능동적으로 인식하고 있으므로 메모리 부족 시에도 시스템이 중단할 후보로 고려되지 않는 서비스를 말합니다. 포그라운드 서비스는 상태 표시줄에 대한 알림을 제공해야 합니다. 이것은 "진행 중" 제목 아래에 배치되며, 이는 곧 해당 알림은 서비스가 중단되었거나 포그라운드에서 제거되지 않은 이상 해제될 수 없다는 뜻입니다.
