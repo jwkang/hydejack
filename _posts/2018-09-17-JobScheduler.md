@@ -84,4 +84,4 @@ Android 8.0는 사용자가 앱과 직접 상호작용하지 않을 때 이 앱�
 2. `JobService` : Job 실행시 필요한 동작을 구현
 3. `android.permission.BIND_JOB_SERVICE` permission : Job 실행을 위한 권한
 
-## JobIntentService 사용하기
+## JobIntentService 사용하기 (To be continued)
