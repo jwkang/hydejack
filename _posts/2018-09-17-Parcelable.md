@@ -1,4 +1,4 @@
-객체 직렬화 (Parcelable 과 Bundle)
+Intent객체 직렬화 (Parcelable 과 Bundle)
 ===
 
 `Parcelable` 객체는 프로세스간 데이터(객체 포함)를 전달하는 목적으로 존재한다.
@@ -12,14 +12,13 @@ IPC 측면에서는 `Serializable` 개념과는 크게 다르지 않으나, Seri
 **Parcel 객체는 Process간 전달한 데이터를 묶는 데이터 컨테이너**라고 볼 수 있다.
 프로세스 통신을 위해 데이터는 직렬화 되어야 하며, Parcel 객체는 직렬화한 데이터 그 자체이다.
 
-![](/img/Parcelable.md/2018-09-17-13-55-27.png)
-
+![Image](https://i.imgur.com/W3GGTWl.png)
 위의 그림과 같이 Process 간 통신을 IPC라고 하고 IPC 대상이 되는 데이터가 `Parcel`이다.
 다시 말해 Parcel은 송신측에서 수신측으로 전달되는 데이터를 저장하는 용도이다.
 
 - IPC 통신은 최대한 고속으로 이뤄져야 한다. 그러므로 전달되는 데이터는 IPC 통신이 신속히 이뤄질 수 있도록 최적화 되어야 하고 고성능 IPC 전송을 가능케 하는 데이터가 바로 Parcel이다.
 - <http://www.developerphil.com/parcelable-vs-serializable/>
-- ![](/img/Parcelable.md/2018-09-17-13-54-10.png)
+  ![Image](https://i.imgur.com/MfGVzog.png)
 
 ## Pacel의 제약 사항
 - `Parcel` 데이터를 추가한 순서대로 읽어야 한다. 추가한 순서대로 읽지 못하면 data가 깨지게 된다. 
@@ -40,9 +39,10 @@ IPC 측면에서는 `Serializable` 개념과는 크게 다르지 않으나, Seri
 - `Parcelable`객체는 데이터에 대한 조립과 분해를 쉽게할 수 있도록 도와준다. 
 
 # Parcelable
-![](/img/Parcelable.md/2018-09-17-17-21-59.png)
+![Image](https://i.imgur.com/R06ETBI.png)
 
-![](/img/Parcelable.md/2018-09-17-19-23-45.png)
+![Image](https://i.imgur.com/VnzWRx1.png)
+
 `Parcel` 객체는 직렬화 class로써 내부 데이터들이, 모두 `Serializable` 객체를 이용해서 직렬화 되어 있고, `Parcel` 객체의 분해와 조립을 쉽게 해주는 것이 `Parcelable` 객체이다.
 
 `Parcelable` 객체에서 아래 함수가 가장 중요하다.
@@ -122,7 +122,7 @@ IPC 측면에서는 `Serializable` 개념과는 크게 다르지 않으나, Seri
     ```
 
     Pacelable 객체는 다음과 같이 빠르게 생성할 수도 있다.
-    ![](/img/Parcelable.md/test.gif)
+    ![Image](https://i.imgur.com/Xd7rkzJ.gif)
 
 # 멀티 프로세스와 Bundle 
 안드로이드는 기본적으로 멀티 프로세스 환경이기 이다. 
@@ -140,7 +140,7 @@ IPC 측면에서는 `Serializable` 개념과는 크게 다르지 않으나, Seri
 
 `Bundle`은 `Parcelable` 객체를 상속받아 구현한 객체 이다. 
 
-![](/img/Parcelable.md/2018-09-17-19-23-32.png)
+![Image](https://i.imgur.com/6rsmLxa.png)
 
 - Bundle class로 모든 Class를 객체화 할 순 없지만 간단한 데이터 전달을 위한 용도로 아주 편리하게 이용될 수 있다.
 - Bundle 객체는 내부적으로 ArrayMap Collection을 사용한다.

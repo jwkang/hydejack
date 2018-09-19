@@ -7,8 +7,8 @@
 `AIDL`과 `Messenger 및 Handler`를 통한 `Binder 통신(IPC)`을 이해하기 위해서도 객제 직렬화에 대한 이해가 필요하다. 
 
 Android API 문서를 보면 아래와 같이 `Parcelable` `interface`에 대한 내용도 볼 수 있다. 
-- ![](img/Serialize.md/2018-09-17-01-31-05.png)
-- ![](img/Serialize.md/2018-09-17-01-31-17.png)
+    ![Image](https://i.imgur.com/t2IYvoP.png)
+    ![Image](https://i.imgur.com/kfFRiiz.png)
 뿐만 아니라, API 문서를 보면, Parcel, Bundle과 같이 직렬화와 관련된 객체를 사용하는 함수를 많이 볼 수 있다. 
 
 이하에서는 객체 직렬화를 통해 `Binder`를 이용해 data를 전달하는 과정을 설명하고자 한다. 
@@ -17,12 +17,12 @@ Android API 문서를 보면 아래와 같이 `Parcelable` `interface`에 대한
 - 객체는 메모리에 존재할 것이고, 객체 자체는 함수와 변수들이 존재 한다. 
 - 함수와 변수는 메모리의 다른 영역에 저장된다. (함수 : code 영역 , 변수 : heap/stack 영역)
 - 직렬화는 전달할 데이터만 관심을 갖으므로, 함수는 무시하고 단지 변수만을 포함한다. 
-    ![](img/Serialize.md/2018-09-17-01-45-21.png)
+    ![Image](https://i.imgur.com/9NVMmwC.png)
 
 - 직렬화 개념은 **변수 데이터를 순차적으로 byte 코드로 나열하는 것**이다.
 - byte 코드로 나열되면 이 데이터가 무엇이든 전송이 가능하다.
 - `직렬화` 돼 전달된 객체는 수신측에서 다시 `역직렬화`돼 의미단위로 해석돼 사용할 수 있게된다. 
-    ![](img/Serialize.md/2018-09-17-01-48-01.png)
+    ![Image](https://i.imgur.com/d8RTBAS.png)
 - 서로 다른 Process들 끼리 `IPC`통신을 하기 위해서 Android에서는 `Binder`라는 것을 사용하는데, 이때 `Binder`는 `byte stream` 전송이 가능하므로 직렬화가 필요하다. 
 
 ## Serializable interface를 이용한 직렬화
@@ -57,9 +57,9 @@ Serializable을 marker interface로 두는 이유는 해당 객체가 직렬화 
     - 이 버젼이 수신측과 송신측이 다르면 송신측에 보낸 객체를 수신측에서 받을때 객체는 동일한 객체로 보나, 객체 자체의 내용이 달라졌다고 보고 역직렬화를 하지 못한다.
 
 ## Serializable 객체를 통한 package간 통신 예제
-| Server(caller) application 폴더 구성 | ![](img/Serialize.md/2018-09-17-02-12-43.png) |
+| Server(caller) application 폴더 구성 | ![Image](https://i.imgur.com/odVPUrG.png) |
 | ------------------------------------| --------------------------------------------- |
-| Client(callee) application 폴더 구성 | ![](img/Serialize.md/2018-09-17-02-13-47.png) |
+| Client(callee) application 폴더 구성 | ![Image](https://i.imgur.com/PFZRcVy.png) |
 
 1. Serializable class
     ```java
