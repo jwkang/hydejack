@@ -6,8 +6,8 @@ google_analytics:
 title: Trophy
 description: 
 url: ""
-email: "krnomad@gmail.com"
-baseurl: "http://jwkang.github.io"
+#email: "krnomad@gmail.com"
+baseurl: ""
 twitter_username: 
 default_img: 
 
